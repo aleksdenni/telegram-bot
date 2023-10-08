@@ -1,7 +1,7 @@
-package com.example.telegrambot;
+package com.example.telegrambot.bot;
 
-import com.example.telegrambot.dto.VacancyDto;
-import com.example.telegrambot.service.VacancyService;
+import com.example.telegrambot.application.vacancy.dto.VacancyDto;
+import com.example.telegrambot.application.vacancy.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

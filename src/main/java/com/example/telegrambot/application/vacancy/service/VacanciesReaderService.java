@@ -1,6 +1,6 @@
-package com.example.telegrambot.service;
+package com.example.telegrambot.application.vacancy.service;
 
-import com.example.telegrambot.dto.VacancyDto;
+import com.example.telegrambot.application.vacancy.dto.VacancyDto;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.core.io.ClassPathResource;

@@ -1,4 +1,4 @@
-package com.example.telegrambot.dto;
+package com.example.telegrambot.application.vacancy.dto;
 
 import com.opencsv.bean.CsvBindByName;
 

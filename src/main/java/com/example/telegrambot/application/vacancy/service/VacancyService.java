@@ -1,6 +1,6 @@
-package com.example.telegrambot.service;
+package com.example.telegrambot.application.vacancy.service;
 
-import com.example.telegrambot.dto.VacancyDto;
+import com.example.telegrambot.application.vacancy.dto.VacancyDto;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
