@@ -24,6 +24,10 @@ import java.util.Map;
 @Component
 public class PiBot extends TelegramLongPollingBot {
 
+    private final String JUNIOR = "junior";
+    private final String MIDDLE = "middle";
+    private final String SENIOR = "senior";
+
     @Value("bot.name")
     private final String name;
 
@@ -80,11 +84,11 @@ public class PiBot extends TelegramLongPollingBot {
         Long chatId = update.getCallbackQuery().getMessage().getChatId();
         String level = lastShownVacancyLevel.get(chatId);
 
-        if ("junior".equals(level)) {
+        if (JUNIOR.equals(level)) {
             showJuniorVacancies(update);
-        } else if ("middle".equals(level)) {
+        } else if (MIDDLE.equals(level)) {
             showMiddleVacancies(update);
-        } else if ("senior".equals(level)) {
+        } else if (SENIOR.equals(level)) {
             showSeniorVacancies(update);
         }
     }
@@ -96,7 +100,7 @@ public class PiBot extends TelegramLongPollingBot {
         sendMessage.setChatId(chatId);
         sendMessage.setReplyMarkup(getJuniorVacanciesMenu());
         execute(sendMessage);
-        lastShownVacancyLevel.put(chatId, "junior");
+        lastShownVacancyLevel.put(chatId, JUNIOR);
     }
 
     private void showMiddleVacancies(Update update) throws TelegramApiException {
@@ -106,7 +110,7 @@ public class PiBot extends TelegramLongPollingBot {
         sendMessage.setChatId(chatId);
         sendMessage.setReplyMarkup(getMiddleVacanciesMenu());
         execute(sendMessage);
-        lastShownVacancyLevel.put(chatId, "middle");
+        lastShownVacancyLevel.put(chatId, MIDDLE);
     }
 
     private void showSeniorVacancies(Update update) throws TelegramApiException {
@@ -116,7 +120,7 @@ public class PiBot extends TelegramLongPollingBot {
         sendMessage.setChatId(chatId);
         sendMessage.setReplyMarkup(getSeniorVacanciesMenu());
         execute(sendMessage);
-        lastShownVacancyLevel.put(chatId, "senior");
+        lastShownVacancyLevel.put(chatId, SENIOR);
     }
 
     private ReplyKeyboard getJuniorVacanciesMenu() {
@@ -231,17 +235,17 @@ public class PiBot extends TelegramLongPollingBot {
     private ReplyKeyboard getStartMenu() {
         List<InlineKeyboardButton> row = new ArrayList<>();
         InlineKeyboardButton junior = new InlineKeyboardButton();
-        junior.setText("junior");
+        junior.setText(JUNIOR);
         junior.setCallbackData("showJuniorVacancies");
         row.add(junior);
 
         InlineKeyboardButton middle = new InlineKeyboardButton();
-        middle.setText("middle");
+        middle.setText(MIDDLE);
         middle.setCallbackData("showMiddleVacancies");
         row.add(middle);
 
         InlineKeyboardButton senior = new InlineKeyboardButton();
-        senior.setText("senior");
+        senior.setText(SENIOR);
         senior.setCallbackData("showSeniorVacancies");
         row.add(senior);
 
@@ -256,9 +260,9 @@ public class PiBot extends TelegramLongPollingBot {
 
         List<KeyboardRow> keyboardRows = new ArrayList<>();
         KeyboardRow keyboardRow = new KeyboardRow();
-        keyboardRow.add("junior");
-        keyboardRow.add("middle");
-        keyboardRow.add("senior");
+        keyboardRow.add(JUNIOR);
+        keyboardRow.add(MIDDLE);
+        keyboardRow.add(SENIOR);
         keyboardRows.add(keyboardRow);
         replyKeyboardMarkup.setKeyboard(keyboardRows);
 
